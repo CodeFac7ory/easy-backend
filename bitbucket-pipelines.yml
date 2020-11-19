@@ -1,0 +1,17 @@
+image: adoptopenjdk/openjdk8
+
+pipelines:
+
+  default:
+    - step:
+        name: test
+        script:
+          # dependency task
+          - cd ./dependency
+          - ./mvnw test
+          # mapping task
+          - cd ../mapping
+          - ./mvnw test
+          # testing task
+          - cd ../test
+          - ./mvnw test
